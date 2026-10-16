@@ -1,7 +1,6 @@
 let edadesIzquierda = [];
 let edadesDerecha = [];
 
-
 function agregarEdad() {
     let edadRecuperada;
     edadRecuperada = recuperarInt("edad")
