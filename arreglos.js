@@ -19,7 +19,7 @@ function pintarArregloIzquierda() {
         contenidoTabla += "<tr>";
         contenidoTabla += "<td>" + Edad + "</td>";
         contenidoTabla += "<td><button class='btn-eliminar' onclick='eliminarIzquierdo(" + i + ")'>Eliminar</button></td>";
-        contenidoTabla += "<td><button class='btn-mover'>➔</button></td>";
+        contenidoTabla += "<td><button class='btn-mover' onclick='moverHaciaDerecha(" + i + ")'>➔</button></td>";
         contenidoTabla += "</tr>";
     }
     
@@ -39,7 +39,7 @@ function pintarArregloDerecha() {
     for (let i = 0; i < edadesDerecha.length; i++) {
         Edad = edadesDerecha[i];
         contenidoTabla += "<tr>";
-        contenidoTabla += "<td><button class='btn-mover'>⬅</button></td>";
+        contenidoTabla += "<td><button class='btn-mover' onclick='moverHaciaIzquierda(" + i + ")'>⬅</button></td>";
         contenidoTabla += "<td>" + Edad + "</td>";
         contenidoTabla += "<td><button class='btn-eliminar' onclick='eliminarDerecho(" + i + ")'>Eliminar</button></td>";
         contenidoTabla += "</tr>";
@@ -50,5 +50,23 @@ function pintarArregloDerecha() {
 
 function eliminarDerecho(indice) {
     edadesDerecha.splice(indice, 1);
+    pintarArregloDerecha();
+}
+
+function moverHaciaDerecha(indice) {
+    let edadMover = edadesIzquierda[indice]; 
+    edadesDerecha.push(edadMover);
+    edadesIzquierda.splice(indice, 1);
+    
+    pintarArregloIzquierda();
+    pintarArregloDerecha();
+}
+
+function moverHaciaIzquierda(indice) {
+    let edadMover = edadesDerecha[indice]; 
+    edadesIzquierda.push(edadMover);
+    edadesDerecha.splice(indice, 1);
+    
+    pintarArregloIzquierda();
     pintarArregloDerecha();
 }
